@@ -1,0 +1,92 @@
+.ChetView {
+    position: relative;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 50vw;
+    max-width: 200px;
+    padding: 10px 25px;
+    background: var(--var-bg-balance-block);
+    box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: 0.3s newblock;
+}
+
+.ChetView:hover {
+    opacity: 0.7;
+}
+
+@keyframes newblock {
+    0% {
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    100% {
+        width: 50vw;
+        height: 30vh;
+        padding: 10px 25px;
+    }
+}
+
+.ChetTitle {
+    color: var(--var-body-fc);
+    font-size: 20px;
+    width: 100%;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ChetBalance {
+    color: var(--var-body-fc);
+    width: 100%;
+    text-align: start;
+    padding: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button {
+    position: relative;
+    padding: 10px 20px;
+    border: none;
+    margin: 0 5px;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+    width: 50%;
+    max-width: 50px;
+    height: 10%;
+    background: var(--var-button-color);
+    color: var(--var-body-fc);
+}
+
+.button:hover {
+    opacity: 0.7;
+}
+
+.increment {
+    background: rgba(80, 255, 90, 0.7);
+}
+
+.decrement {
+    background: rgba(255, 90, 80, 0.7);
+}
+
+.change {
+    padding: 0;
+    width: fit-content;
+    background: inherit;
+    cursor: pointer;
+}
