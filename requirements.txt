@@ -1,0 +1,10 @@
+altgraph==0.17.3
+bottle==0.12.23
+macholib==1.16.2
+proxy-tools==0.1.0
+pyinstaller==5.8.0
+pyinstaller-hooks-contrib==2022.15
+pyobjc-core==9.0.1
+pyobjc-framework-Cocoa==9.0.1
+pyobjc-framework-WebKit==9.0.1
+pywebview==4.0.1
