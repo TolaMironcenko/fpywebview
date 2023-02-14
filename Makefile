@@ -3,7 +3,8 @@ all:
 	@make build
 
 build:
-	@pyinstaller src/main.py -n dt --windowed --noconfirm --clean --add-data "src/templates/build:templates/build" --icon "src/data/img/icon.icns"
+	@pyinstaller dt.spec
+	
 
 clean:
 	@rm -rf build/ dist/

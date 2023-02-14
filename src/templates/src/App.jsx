@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import ChetView from './components/ChetView/ChetView';
 import TransactionView from './components/TransactionView/TransactionView';
 
 function App() {
+  // window.location.reload()
 
-  const [ChetList, SetChetList] = useState([
-    {"id": 0, "title": 'main', "balance": 0},
-    {"id": 1, "title": 'main', "balance": 0},
-    {"id": 2, "title": 'main', "balance": 0},
-    {"id": 3, "title": 'main', "balance": 0},
-  ])
+  const [ChetList, SetChetList] = useState([])
+  // console.log(JSON.parse(window.pywebview.api.get_all_chets(1)))
+
+  useEffect(() => {
+    window.pywebview.api.get_all_chets(1)
+    .then(res => SetChetList(res))
+  }, [])
 
   const [TransactionList, SetTransactionList] = useState([
     {"id": 0, 'sum': 10, 'category': 'Food', 'datetime': new Date()},
@@ -20,6 +22,11 @@ function App() {
     {"id": 4, 'sum': 10, 'category': 'No category', 'datetime': new Date()},
   ])
 
+  const create_chet = () => {
+    window.pywebview.api.create_chet(1, 'new')
+    .then(res => SetChetList([...ChetList, res]))
+  }
+
   return (
     <div className="App">
       <div className="chets">
@@ -28,13 +35,16 @@ function App() {
             return(
               <ChetView 
                 key={Chet.id}
-                ChetTitle={Chet.title} 
+                ChetTitle={Chet.name} 
                 ChetBalance={Chet.balance}
               />
             )
           })
         }
-        <button className='addchet'>+</button>
+        <button 
+          className='addchet'
+          onClick={create_chet}
+        >+</button>
       </div>
 
       <div className="transactions">
