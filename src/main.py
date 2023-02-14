@@ -11,7 +11,7 @@ def hello():
 if __name__ == '__main__':
     window_args = {
         'title': 'DUTY',
-        'url': PROD['template'],
+        'url': DEV['template'],
         'width': 350,
         'height': 350,
         'min_size': (350, 350)
@@ -19,4 +19,4 @@ if __name__ == '__main__':
     window = webview.create_window(**window_args)
     window.expose(hello)
 
-    webview.start(window, debug=PROD['debug'])
+    webview.start(window, debug=DEV['debug'])

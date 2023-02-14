@@ -6,18 +6,18 @@ import TransactionView from './components/TransactionView/TransactionView';
 function App() {
 
   const [ChetList, SetChetList] = useState([
-    {"title": 'main', "balance": 0},
-    {"title": 'main', "balance": 0},
-    {"title": 'main', "balance": 0},
-    {"title": 'main', "balance": 0},
+    {"id": 0, "title": 'main', "balance": 0},
+    {"id": 1, "title": 'main', "balance": 0},
+    {"id": 2, "title": 'main', "balance": 0},
+    {"id": 3, "title": 'main', "balance": 0},
   ])
 
   const [TransactionList, SetTransactionList] = useState([
-    {'sum': 10, 'category': 'Food', 'datetime': new Date()},
-    {'sum': -10, 'category': 'Transport', 'datetime': new Date()},
-    {'sum': 10, 'category': 'No category', 'datetime': new Date()},
-    {'sum': -10, 'category': 'No category', 'datetime': new Date()},
-    {'sum': 10, 'category': 'No category', 'datetime': new Date()},
+    {"id": 0, 'sum': 10, 'category': 'Food', 'datetime': new Date()},
+    {"id": 1, 'sum': -10, 'category': 'Transport', 'datetime': new Date()},
+    {"id": 2, 'sum': 10, 'category': 'No category', 'datetime': new Date()},
+    {"id": 3, 'sum': -10, 'category': 'No category', 'datetime': new Date()},
+    {"id": 4, 'sum': 10, 'category': 'No category', 'datetime': new Date()},
   ])
 
   return (
@@ -26,7 +26,11 @@ function App() {
         {
           ChetList.map(Chet => {
             return(
-              <ChetView ChetTitle={Chet.title} ChetBalance={Chet.balance}/>
+              <ChetView 
+                key={Chet.id}
+                ChetTitle={Chet.title} 
+                ChetBalance={Chet.balance}
+              />
             )
           })
         }
@@ -40,6 +44,7 @@ function App() {
           :TransactionList.map(Transaction => {
             return(
               <TransactionView 
+                key={Transaction.id}
                 sum={Transaction.sum} 
                 category={Transaction.category} 
                 datetime={Transaction.datetime.getDay()+'.'+Transaction.datetime.getMonth()+'.'+Transaction.datetime.getFullYear()}

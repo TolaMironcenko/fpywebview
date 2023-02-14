@@ -4,7 +4,7 @@ import styles from './TransactionView.module.css'
 const TransactionView = ({sum, category, datetime, ...props}) => {
     return (
         <div className={styles.TransactionView}>
-            <div className={styles.sum}>{sum}</div>
+            <div className={styles.sum} style={sum>0?{color: 'green'}:{color: 'red'}}>{sum}</div>
             <div className={styles.category}>
                 {category}
                 {
