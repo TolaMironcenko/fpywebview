@@ -10,7 +10,7 @@ def hello():
 
 if __name__ == '__main__':
     window_args = {
-        'title': 'hello world',
+        'title': 'DUTY',
         'url': PROD['template'],
         'width': 350,
         'height': 350,

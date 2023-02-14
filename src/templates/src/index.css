@@ -41,3 +41,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h2 {
+  color: var(--var-body-fc);
+  text-align: center;
+}

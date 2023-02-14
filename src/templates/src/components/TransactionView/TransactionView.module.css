@@ -1,0 +1,31 @@
+.TransactionView {
+    color: var(--var-body-fc);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    animation: TransactionAnimation 0.4s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.TransactionView:hover {
+    box-shadow: var(--var-shadow-balance-block) 0 0 2px, var(--var-shadow-balance-block) 0 0 2px;
+    transform: translateY(-2px);
+}
+
+@keyframes TransactionAnimation {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.category {
+    display: flex;
+    align-items: center;
+}

@@ -17,20 +17,16 @@
 
 .ChetView:hover {
     opacity: 0.7;
+    transform: translateY(-2px);
 }
 
 @keyframes newblock {
     0% {
-        width: 0;
-        height: 0;
-        padding: 0;
-        overflow: hidden;
+        transform: scale(0);
     }
 
     100% {
-        width: 50vw;
-        height: 30vh;
-        padding: 10px 25px;
+        transform: scale(1);
     }
 }
 
@@ -89,4 +85,5 @@
     width: fit-content;
     background: inherit;
     cursor: pointer;
+    transform: rotate(90deg);
 }
