@@ -29,10 +29,21 @@
   box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;
   border-radius: 20px;
   border: none;
+  animation: 0.3s newblock;
 }
 
 .addchet:hover {
   opacity: 0.7;
+}
+
+@keyframes newblock {
+  0% {
+      transform: scale(0);
+  }
+
+  100% {
+      transform: scale(1);
+  }
 }
 
 .transactions {

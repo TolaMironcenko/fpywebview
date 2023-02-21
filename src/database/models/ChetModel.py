@@ -8,7 +8,7 @@ from .UserModel import User
 class Chet(BaseModel):
     # id = AutoField(column_name='ChetId')
     user = ForeignKeyField(User, backref='Chet')
-    name = TextField(column_name='ChetName', null=False)
+    name = TextField(column_name='ChetName', null=False, unique=True)
     balance = FloatField(column_name='ChetBalance', null=False, default=0)
 
     def __str__(self):

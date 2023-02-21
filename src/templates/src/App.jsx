@@ -1,17 +1,28 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import ChetView from './components/ChetView/ChetView';
+import Loader from './components/LoaderView/Loader';
 import TransactionView from './components/TransactionView/TransactionView';
 
 function App() {
-  // window.location.reload()
-
   const [ChetList, SetChetList] = useState([])
-  // console.log(JSON.parse(window.pywebview.api.get_all_chets(1)))
+  const [activeload, setActiveload] = useState(false)
+
+
+  const get_all_chets = () => {
+    window.pywebview.api.get_all_chets(1).then(
+      result => SetChetList(JSON.parse(result))
+    )
+    setActiveload(false)
+  }
+
 
   useEffect(() => {
-    window.pywebview.api.get_all_chets(1)
-    .then(res => SetChetList(res))
+    setActiveload(true)
+    const interval = setInterval(() => {
+      get_all_chets()
+    }, 1000)
+    return () => clearInterval(interval)
   }, [])
 
   const [TransactionList, SetTransactionList] = useState([
@@ -24,12 +35,17 @@ function App() {
 
   const create_chet = () => {
     window.pywebview.api.create_chet(1, 'new')
-    .then(res => SetChetList([...ChetList, res]))
+    .then(res => {
+      if (res.code === 'OK') {
+        SetChetList([...ChetList, res])
+      }
+    })
   }
 
   return (
     <div className="App">
       <div className="chets">
+        <Loader active={activeload}/>
         {
           ChetList.map(Chet => {
             return(
@@ -41,10 +57,14 @@ function App() {
             )
           })
         }
-        <button 
-          className='addchet'
-          onClick={create_chet}
-        >+</button>
+        {
+          !activeload?
+          <button 
+            className='addchet'
+            onClick={create_chet}
+          >+</button>:
+          <></>
+        }
       </div>
 
       <div className="transactions">
